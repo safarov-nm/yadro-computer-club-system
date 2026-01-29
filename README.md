@@ -22,7 +22,7 @@
 
 #### 1️⃣ КЛОНИРОВАНИЕ РЕПОЗИТОРИЯ
 ```sh
-git clone https://github.com/safarov-nm/yadro-computer-club-system.git
+git clone --recurse-submodules https://github.com/safarov-nm/yadro-computer-club-system.git
 cd yadro-computer-club-system
 ```
 #### 2️⃣ СБОРКА ПРОЕКТА
