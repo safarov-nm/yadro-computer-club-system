@@ -78,6 +78,25 @@ void ComputerClub::handleSitDown(const Time& eventTime, const std::string& timeS
 
 void ComputerClub::handleWaiting(const Time& eventTime, const std::string& timeString, Client& client, const std::string& clientName) {
         
+        if (!client.inClub) {
+            outputError(timeString, ErrorMsg::CLIENT_UNKNOWN);
+            return;
+        }
+
+        if (client.table != NO_TABLE) {
+            outputError(timeString, ErrorMsg::CLIENT_IS_AT_TABLE);
+            return;
+        }
+
+        std::queue<std::string> tempQueue = queue;
+        while (!tempQueue.empty()) {
+            if (tempQueue.front() == clientName) {
+                outputError(timeString, ErrorMsg::CLIENT_IS_IN_QUEUE);
+                return;
+            }
+            tempQueue.pop();
+        }
+
         if (findFreeTable() != NO_TABLE) {
             outputError(timeString, ErrorMsg::I_CAN_WAIT_NO_LONGER);
             return;

@@ -8,7 +8,6 @@
 
 #include "time.hpp"
 
-// Константы типов событий
 enum EventType {
     CLIENT_ARRIVED = 1,      // Входящее: клиент пришел
     CLIENT_SAT_TABLE = 2,    // Входящее: клиент сел за стол
@@ -19,14 +18,15 @@ enum EventType {
     ERROR_OCCURRED = 13      // Исходящее: ошибка
 };
 
-
-// Константы сообщений об ошибках
 namespace ErrorMsg {
     const std::string NOT_OPEN_YET = "NotOpenYet";
     const std::string YOU_SHALL_NOT_PASS = "YouShallNotPass";
     const std::string CLIENT_UNKNOWN = "ClientUnknown";
     const std::string PLACE_IS_BUSY = "PlaceIsBusy";
     const std::string I_CAN_WAIT_NO_LONGER = "ICanWaitNoLonger!";
+
+    const std::string CLIENT_IS_AT_TABLE = "IAlreadySittingTable!";
+    const std::string CLIENT_IS_IN_QUEUE = "IAlreadyInQueue!";
 }
 
 class ComputerClub {

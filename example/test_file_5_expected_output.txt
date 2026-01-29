@@ -1,0 +1,22 @@
+09:00
+10:00 1 alice
+10:05 2 alice 1
+10:10 1 bob
+10:15 3 bob
+10:15 4 alice
+10:15 12 bob 1
+10:15 1 john
+10:20 1 garry
+10:21 3 garry
+10:22 2 john 1
+10:22 13 PlaceIsBusy
+11:00 4 alice
+11:00 13 ClientUnknown
+11:30 3 garry
+11:30 13 IAlreadyInQueue!
+11:50 4 bob
+11:50 12 garry 1
+20:00 11 garry
+20:00 11 john
+20:00
+1 120 09:55

@@ -1,0 +1,7 @@
+10:00
+09:30 1 alice
+09:30 13 NotOpenYet
+10:10 4 alice
+10:10 13 ClientUnknown
+12:00
+1 0 00:00
