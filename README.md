@@ -41,9 +41,9 @@ cmake --build . --config Release
 #### 3️⃣ ЗАПУСК ПРОГРАММЫ
 ```sh
 # ОСНОВНАЯ ПРОГРАММА
-../build/Release/ComputerClub test_file_1.txt
+cd ../example && ../build/Release/ComputerClub test_file_1.txt
 
-# МОДУЛЬНЫЕ ТЕСТЫ 
+# МОДУЛЬНЫЕ ТЕСТЫ (ТЕКУЩАЯ ДИРЕКТОРИЯ — build)
 ./Release/ComputerClubTests [--gtest_filter=TEST_NAME.*]
 ```
 ---
