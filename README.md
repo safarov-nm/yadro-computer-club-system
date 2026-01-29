@@ -107,7 +107,7 @@ cmake --build . --config Release
 ```
 ЕСЛИ КЛИЕНТ УЖЕ В КОМПЬЮТЕРНОМ КЛУБЕ, ГЕНЕРИРУЕТСЯ ОШИБКА "YouShallNotPass"
 
-ЕСЛИ КЛИЕНТ ПРИШЕЛ В НЕРАБОЧИЕ ЧАСЫ, ТОГДА "NotOpenYet"
+ЕСЛИ КЛИЕНТ ПРИШЁЛ В НЕРАБОЧИЕ ЧАСЫ, ТОГДА "NotOpenYet"
 - 🪑 **`ID 2`. КЛИЕНТ СЕЛ ЗА СТОЛ**
 
 ```
