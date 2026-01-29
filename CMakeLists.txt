@@ -21,7 +21,7 @@ add_subdirectory(third_party/googletest)
 add_executable(ComputerClubTests
     tests/test_time.cpp
     tests/test_input_validator.cpp
-    tests/test_computer_club_simple.cpp
+    tests/test_computer_club.cpp
     src/time.cpp
     src/input_validator.cpp       
     src/computer_club.cpp         
