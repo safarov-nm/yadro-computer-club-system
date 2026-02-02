@@ -200,7 +200,7 @@ void ComputerClub::processEvent(const std::string& timeString, const std::string
 }
 
 void ComputerClub::closeClub() {
-    // Клиенты за столами
+
     for (auto& pair : clients) {
         Client& c = pair.second;
         if (c.inClub && c.table != NO_TABLE) {
@@ -212,7 +212,6 @@ void ComputerClub::closeClub() {
         }
     }
     
-    // Выводим всех клиентов в алфавитном порядке
     for (auto& pair : clients) {
        
         Client& c = pair.second;
@@ -227,7 +226,6 @@ void ComputerClub::closeClub() {
         }
     }
     
-    // Очищаем очередь
     while (!queue.empty()) {
         queue.pop();
     }

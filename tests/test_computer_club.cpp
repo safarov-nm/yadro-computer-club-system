@@ -45,7 +45,7 @@ TEST(ComputerClubTest, PlaceIsBusy) {
     club.processEvent("09:30", "client1", CLIENT_ARRIVED);
     club.processEvent("09:35", "client1", CLIENT_SAT_TABLE, 1);
     club.processEvent("09:40", "client2", CLIENT_ARRIVED);
-    club.processEvent("09:45", "client2", CLIENT_SAT_TABLE, 1); // Стол уже занят!
+    club.processEvent("09:45", "client2", CLIENT_SAT_TABLE, 1);
     std::string output = testing::internal::GetCapturedStdout();
     
     EXPECT_NE(output.find("PlaceIsBusy"), std::string::npos);
@@ -53,7 +53,7 @@ TEST(ComputerClubTest, PlaceIsBusy) {
 
 // Тест 5: Очередь работает
 TEST(ComputerClubTest, QueueWorks) {
-    ComputerClub club(1, Time("09:00"), Time("19:00"), 10); // Только 1 стол!
+    ComputerClub club(1, Time("09:00"), Time("19:00"), 10);
     
     testing::internal::CaptureStdout();
     // Клиент1 садится за стол
@@ -91,7 +91,7 @@ TEST(ComputerClubTest, CloseClubKicksEveryone) {
 }
 
 TEST(ComputerClubTest, QueueFullClientLeavesImmediately) {
-    // По ТЗ: если в очереди уже N клиентов (N = количество столов), 
+    // Если в очереди уже N клиентов (N = количество столов), 
     // новый клиент сразу уходит (событие 11)
     ComputerClub club(1, Time("09:00"), Time("19:00"), 10); // 1 стол
     
@@ -211,29 +211,28 @@ TEST(ComputerClubTest, MultipleClientsLeaveQueue) {
     club.printSummary();
     
     std::string output = testing::internal::GetCapturedStdout();
-
     
-    // 1. client3 должен был уйти сразу при попытке встать в очередь
+    // client3 должен был уйти сразу при попытке встать в очередь
     EXPECT_NE(output.find("09:25 11 client3"), std::string::npos) 
         << "client3 should leave immediately when queue is full";
     
-    // 2. client4 тоже должен уйти сразу
+    // client4 тоже должен уйти сразу
     EXPECT_NE(output.find("09:35 11 client4"), std::string::npos) 
         << "client4 should leave immediately when queue is full";
     
-    // 3. client2 успешно уходит из очереди (без события 11)
+    // client2 успешно уходит из очереди (без события 11)
     EXPECT_NE(output.find("09:40 4 client2"), std::string::npos) 
         << "client2 should leave queue normally";
     
-    // 4. client3 пытается уйти, но его нет -> ошибка
+    // client3 пытается уйти, но его нет -> ошибка
     EXPECT_NE(output.find("09:45 13 ClientUnknown"), std::string::npos) 
         << "Should get ClientUnknown when non-existent client leaves";
     
-    // 5. Никто не садится за стол после client1 (очередь пуста)
+    // Никто не садится за стол после client1 (очередь пуста)
     EXPECT_EQ(output.find("12 client"), std::string::npos) 
         << "No one should sit at table after client1 leaves (queue is empty)";
     
-    // 6. Правильная выручка: только client1 сидел 55 мин -> 1 час = 10 руб
+    // Правильная выручка: только client1 сидел 55 мин -> 1 час = 10 руб
     EXPECT_NE(output.find("1 10 00:55"), std::string::npos) 
         << "Revenue should be 10 for 55 minutes (rounded up to 1 hour)";
 }
@@ -245,10 +244,9 @@ TEST(ComputerClubTest, ClientSitsThenWaitsShouldBeError) {
     
     club.processEvent("09:00", "client1", CLIENT_ARRIVED);
     club.processEvent("09:05", "client1", CLIENT_SAT_TABLE, 1);
-    club.processEvent("09:25", "client1", CLIENT_WAITING);  // ← ДОЛЖНА БЫТЬ ОШИБКА
+    club.processEvent("09:25", "client1", CLIENT_WAITING);
     
     std::string output = testing::internal::GetCapturedStdout();
     
-    // Проверяем, что есть ошибка ClientIsAtTable
     EXPECT_NE(output.find("13 IAlreadySittingTable!"), std::string::npos);
 }
